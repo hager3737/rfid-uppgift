@@ -1,0 +1,9 @@
+{
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "c:\\Users\\johan\\OneDrive\\Dokument\\Nackademin\\c-programmering\\individuell\\rfid-uppgift",
+            "binaryPath": "c:\\Users\\johan\\OneDrive\\Dokument\\Nackademin\\c-programmering\\individuell\\rfid-uppgift\\main.exe",
+            "binaryArgs": []
+        }
+    ]
+}
