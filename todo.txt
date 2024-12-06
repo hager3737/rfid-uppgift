@@ -1,6 +1,6 @@
 // 1. När val 1 väljs ska lampan lysa grönt i 3 sekunder sedan bli röd.
 // 2. När val 2 väljs och inga kort finns i databasen, så skrivs det ut i terminalen.
-3. Lägg till safeinput för alla tillfällen då användaren matar in något.
+3. Lägg till safeinput för alla tillfällen då användaren matar in något och att man kommer tillbaka till samma meny.
 // 4. När val 3 väljs och användaren vill byta access, lägg till så att när ett korts status ändras så uppdateras txt filen.
 // 5. Lägg till så att det alltid är möjligt att gå tillbaka till huvudmenyn.
 // 6. Fixa bugg där filen hoppar över en rad.

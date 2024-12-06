@@ -29,7 +29,7 @@ void clearTerminal() {
 
 void readIdsFromFile(Card **cards, int *cardsCount) {
 
-    FILE *file = fopen("C:\\Users\\johan\\OneDrive\\Dokument\\Nackademin\\c-programmering\\individuell\\rfid-uppgift\\id.txt", "r");
+    FILE *file = fopen("id.txt", "r");
         if(file == NULL) {
             printf("Something went wrong opening the file.");
             return;
@@ -65,20 +65,24 @@ void addCard(Card *card, int *cardsCount) {
     int cardID = 0;
     bool emptyFile = false;
 
-    
+    clearTerminal();
 
+    do{
     printf("***************************\n");
-    printf("1. Add new card.\n");
+    printf("1. Add new card. Must be 6 numbers\n");
     printf("2. Change access for an allready existing card.\n");
     printf("3. Return to main menu.\n");
     GetInputInt("Choice: ", &choice);
+    } while(choice != 1 && choice != 2 && choice && 3);
     
     if(choice == 1) {
-        printf("Card ID:\n");
-        if(!GetInputInt("ID:", &cardID)){
-            printf("Invalid input. Enter a valid ID.\n");
-            return;
-        }
+        do{
+            GetInputInt("Card ID:", &cardID);
+            if(!(cardID >= 100000 && cardID <= 999999)) {
+                printf("Card ID must be 6 didgits long.\n");
+            }
+        } while(!(cardID >= 100000 && cardID <= 999999));
+        
 
         if(*cardsCount == 0) {
             card->ID = cardID;
@@ -129,7 +133,6 @@ void addCard(Card *card, int *cardsCount) {
         fclose(file);
     } 
     
-
     else if (choice == 2) {
         if(emptyFile == true) {
             printf("There are no cards in the system...\n");
@@ -194,6 +197,9 @@ void addCard(Card *card, int *cardsCount) {
 void fakeTest(Card *card, int *cardsCount) {
     int ID;
     int found = 0; 
+
+    clearTerminal();
+
     printf("Please scan your card or enter 0 to go back to main menu.\n");
     printf("CURRENTLY LAMP IS: OFF\n");
     if(!GetInputInt("ID: ", &ID)) {
@@ -225,6 +231,7 @@ void printCards(Card *card) {
 }
 
 void remoteTest() {
+    clearTerminal();
     printf("Door is open.\n");
     printf("3");
     Sleep(1000);
@@ -255,6 +262,7 @@ int main() {
             getchar();
         }
         else if(choice == 2) {
+            clearTerminal();
             printf("***************************\n");
             printf("All cards in system\n");
             if(cardsCount == 0) {
