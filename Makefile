@@ -1,5 +1,5 @@
 PROG = main.exe
-SRC = main.c safeinput.c safeinput.h
+SRC = main.c src/safeinput.c src/card_manager.c src/utils.c
 CFLAGS = -g -Wall -Werror 
 LIBS = 
 

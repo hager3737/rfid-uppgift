@@ -2,7 +2,7 @@
 #include <string.h>
 #include <limits.h>
 #include <stdlib.h>
-#include "safeinput.h"
+#include "../include/Safeinput.h"
 
 bool parseLong(const char *str, long *val)
 {
@@ -36,13 +36,21 @@ bool parseFloat(const char *str, float *val)
 
 bool GetInputInt(char* prompt, int* value)
 {
-	char buff[255];
-	if (GetInput(prompt, buff, sizeof(buff)) != INPUT_RESULT_OK)
-		return false;
-	long l = LONG_MIN;
-    if(!parseLong(buff,&l)) return false;
-	*value = l;
-	return true;
+    char buff[255];
+    if (GetInput(prompt, buff, sizeof(buff)) != INPUT_RESULT_OK)
+        return false;
+
+    long l = LONG_MIN;
+    if (!parseLong(buff, &l)) {
+        while (getchar() != '\n');  
+        return false;
+    }
+    if (l < INT_MIN || l > INT_MAX) {
+        while (getchar() != '\n'); 
+        return false;  
+    }
+    *value = (int)l;
+    return true;
 }
 
 
